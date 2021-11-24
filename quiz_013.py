@@ -10,15 +10,28 @@ Original file is located at
 def total(items=[], price=[]):
   food = ["pasta", "bread", "pizza"]
   electronics = ["ipad", "tv", "pc"]
-  Liqueur = ["wine", "vodka", "beer"]
+  liqueur = ["wine", "vodka", "beer"]
   total=0
   for i in range(len(price)):
     if items[i] in food:
       total += price[i]*1.1
     elif items[i] in electronics:
       total += price[i]*1.15
+    elif items[i] in liqueur:
+      total += price[i]*1.2
     else:
-     total += price[i]*1.2
+      print("The item is not in the database")
+      print("Is the item food, electronics or linquer?")
+      answer=input("Write 'f' for food, 'e' for electronics and 'l' for linquer: ")
+      if answer=="f":
+        food.append(items[i])
+        total += price[i]*1.1
+      elif answer=="e":
+        electronics.append(items[i])
+        total += price[i]*1.15
+      elif answer=="l":
+        liqueur.append(items[i])
+        total += price[i]*1.2  
   return total
 
-print(total(["bread","beer","ipad"],[300, 800, 30000]))
+print(total(["apple","beer","ipad"],[300, 800, 30000]))
